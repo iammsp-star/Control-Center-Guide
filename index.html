@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Center: The Beginner’s Guide to Controller Gaming</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="glass-header">
+        <div class="container nav-content">
+            <h1 class="logo">Control<span class="highlight">Center</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Start</a></li>
+                    <li><a href="#hardware">Hardware</a></li>
+                    <li><a href="#layouts">Layouts</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section dark-panel">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <h2 class="hero-headline">Master the <span class="highlight-gradient">Controller</span></h2>
+                    <p class="hero-subtext">Level up your skills from absolute beginner to pro. Understand your
+                        hardware, learn the standard layouts, and build game-winning muscle memory.</p>
+                    <a href="#hardware" class="btn-primary">Start Exploring</a>
+                </div>
+                <div class="hero-visual">
+                    <!-- The generated 3D image will go here -->
+                    <img src="./assets/modern_gamepad_3d.png" alt="High Quality 3D Modern Gamepad"
+                        class="gamepad-img floating-anim">
+                </div>
+            </div>
+            <!-- Background Decorative Blobs -->
+            <div class="ambient-light blob-blue"></div>
+            <div class="ambient-light blob-purple"></div>
+        </section>
+
+        <!-- Hardware Basics Section -->
+        <section id="hardware" class="hardware-section container section-padding">
+            <div class="section-header">
+                <h2>Hardware <span class="highlight">Basics</span></h2>
+                <p>Know your weapon. Every modern controller follows this standard anatomy.</p>
+            </div>
+
+            <div class="hardware-grid">
+                <!-- Joysticks -->
+                <div class="glass-card hardware-card">
+                    <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <h3>Joysticks (Thumbsticks)</h3>
+                    <p>The two sticks you push around. <strong>Left stick</strong> usually moves your character.
+                        <strong>Right stick</strong> moves your camera or aim.</p>
+                    <div class="pro-tip">
+                        <h4><i class="fa-solid fa-bolt"></i> Dead Zones</h4>
+                        <p>If your character moves when you aren't touching the stick, your controller has "stick
+                            drift." <strong>Dead Zones</strong> are settings you can increase in-game to ignore tiny,
+                            unwanted movements.</p>
+                    </div>
+                </div>
+
+                <!-- D-Pad -->
+                <div class="glass-card hardware-card">
+                    <div class="card-icon"><i class="fa-solid fa-plus"></i></div>
+                    <h3>D-Pad (Directional Pad)</h3>
+                    <p>The cross-shaped button. Mostly used for navigating menus, selecting items, or quick actions
+                        rather than character movement.</p>
+                </div>
+
+                <!-- Face Buttons -->
+                <div class="glass-card hardware-card">
+                    <div class="card-icon"><i class="fa-regular fa-circle-dot"></i></div>
+                    <h3>Face Buttons</h3>
+                    <p>The main action buttons (A/B/X/Y or Cross/Circle/Square/Triangle). Usually jump, crouch, reload,
+                        and interact.</p>
+                </div>
+
+                <!-- Bumpers vs Triggers -->
+                <div class="glass-card hardware-card hardware-highlight">
+                    <div class="card-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+                    <h3>Bumpers vs. Triggers</h3>
+                    <p>The buttons under your index fingers.</p>
+                    <ul class="feature-list">
+                        <li><strong>Bumpers (L1/R1 or LB/RB):</strong> Small clicks. Used for quick actions like tossing
+                            a grenade.</li>
+                        <li><strong>Triggers (L2/R2 or LT/RT):</strong> Squeezable pulls like a gun trigger or gas
+                            pedal. Used for shooting and driving.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Controller Grip -->
+            <div class="grip-explainer glass-card">
+                <div class="grip-text">
+                    <h3>Holding the Controller</h3>
+                    <p>The <strong>Standard Grip</strong>: Thumbs on the sticks, index fingers resting lightly on the
+                        triggers/bumpers.</p>
+                    <p>The <strong>"Claw" Grip</strong>: An advanced technique where you curve your right index finger
+                        to press the face buttons while your thumb stays on the right stick to aim. <em>Beginners should
+                            stick to standard!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section id="layouts" class="layouts-section dark-panel section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Genre Standard <span class="highlight">Layouts</span></h2>
+                    <p>Different games use buttons differently. Select a genre to see the typical layout.</p>
+                </div>
+
+                <div class="interactive-map-container">
+                    <div class="genre-tabs">
+                        <button class="genre-tab active" data-genre="shooter">Shooters (FPS)</button>
+                        <button class="genre-tab" data-genre="racing">Racing</button>
+                        <button class="genre-tab" data-genre="platformer">Platformer (2D/3D)</button>
+                    </div>
+
+                    <div class="layout-visual glass-card">
+                        <div class="layout-content active" id="layout-shooter">
+                            <h3>Shooter Standard</h3>
+                            <ul class="layout-list">
+                                <li><span class="btn-name">Right Trigger:</span> Fire Weapon</li>
+                                <li><span class="btn-name">Left Trigger:</span> Aim Down Sights (ADS)</li>
+                                <li><span class="btn-name">Face Bottom (A/Cross):</span> Jump</li>
+                                <li><span class="btn-name">Face Left (X/Square):</span> Reload / Interact</li>
+                                <li><span class="btn-name">Right Stick Click:</span> Melee Attack</li>
+                            </ul>
+                            <div class="pro-tip">
+                                <h4><i class="fa-solid fa-crosshairs"></i> Sensitivity Settings</h4>
+                                <p>If you can't hit anything and the camera swings too fast, go to game settings and
+                                    turn <strong>Look Sensitivity</strong> down. Gradually increase it as you get
+                                    comfortable.</p>
+                            </div>
+                        </div>
+
+                        <div class="layout-content" id="layout-racing">
+                            <h3>Racing Standard</h3>
+                            <ul class="layout-list">
+                                <li><span class="btn-name">Right Trigger:</span> Accelerate (Gas)</li>
+                                <li><span class="btn-name">Left Trigger:</span> Brake / Reverse</li>
+                                <li><span class="btn-name">Left Stick:</span> Steer Left / Right</li>
+                                <li><span class="btn-name">Face Bottom/Right:</span> Handbrake</li>
+                                <li><span class="btn-name">Face Top (Y/Triangle):</span> Look Back</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout-content" id="layout-platformer">
+                            <h3>Platformer Standard</h3>
+                            <ul class="layout-list">
+                                <li><span class="btn-name">Left Stick or D-Pad:</span> Move</li>
+                                <li><span class="btn-name">Face Bottom (A/Cross):</span> Jump</li>
+                                <li><span class="btn-name">Face Left (X/Square):</span> Attack / Action</li>
+                                <li><span class="btn-name">Right Trigger:</span> Dash / Run</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Background Decorative Blobs -->
+            <div class="ambient-light blob-purple layout-blob"></div>
+        </section>
+
+        <!-- Curriculum Section -->
+        <section id="curriculum" class="curriculum-section container section-padding">
+            <div class="section-header">
+                <h2>Step-by-Step <span class="highlight">Curriculum</span></h2>
+                <p>The path to building muscle memory.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item glass-card hover-glow-blue">
+                    <div class="level-badge">Level 1</div>
+                    <div class="timeline-content">
+                        <h3>Moving & Looking</h3>
+                        <p>The hardest hurdle for new players. Practice walking forward while panning the camera
+                            smoothly using both sticks simultaneously.</p>
+                        <p><em>Exercise: Boot up a 3D game. Pick a fixed point in the distance. Walk in a circle around
+                                it while keeping your camera locked onto that point.</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item glass-card hover-glow-purple">
+                    <div class="level-badge">Level 2</div>
+                    <div class="timeline-content">
+                        <h3>Button Combinations & Timing</h3>
+                        <p>Moving your thumb from the right stick to a face button to jump, then back to the stick to
+                            aim before you land.</p>
+                        <p><em>Exercise: Try completing simple platforming challenges or shooting targets while
+                                jumping.</em></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item glass-card hover-glow-blue">
+                    <div class="level-badge">Level 3</div>
+                    <div class="timeline-content">
+                        <h3>Subconscious Muscle Memory</h3>
+                        <p>You stop thinking "press X to reload" and start thinking "I need to reload," and your thumb
+                            does the rest automatically. This simply takes hours of playtime in a calm environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section dark-panel section-padding">
+            <div class="container grid-2-col">
+                <div class="resource-card glass-card">
+                    <h3>Controller vs. Mouse/Keyboard</h3>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Feature</th>
+                            <th>Controller</th>
+                            <th>Mouse & Keyboard</th>
+                        </tr>
+                        <tr>
+                            <td>Movement</td>
+                            <td>360° Analog (Fluid)</td>
+                            <td>8-Way WASD (Rigid)</td>
+                        </tr>
+                        <tr>
+                            <td>Aiming</td>
+                            <td>Slightly Slower, relies on Aim Assist</td>
+                            <td>Precise, fast-twitch, exact</td>
+                        </tr>
+                        <tr>
+                            <td>Comfort</td>
+                            <td>High (Couch gaming)</td>
+                            <td>Moderate (Desk required)</td>
+                        </tr>
+                        <tr>
+                            <td>Buttons</td>
+                            <td>~14 (Easy to reach)</td>
+                            <td>100+ (Complex binds)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="resource-card glass-card game-recs">
+                    <h3>Great Games for Beginners</h3>
+                    <p>Start with calm, low-pressure games where you can learn to use the camera without being timed or
+                        attacked.</p>
+                    <ul class="game-list">
+                        <li>
+                            <i class="fa-solid fa-leaf text-blue"></i>
+                            <div>
+                                <strong>Stardew Valley / Animal Crossing</strong>
+                                <span>No camera pressure, simple 2D movement.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-cube text-purple"></i>
+                            <div>
+                                <strong>Minecraft (Peaceful Mode)</strong>
+                                <span>The absolute best way to learn dual-stick 3D movement.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-spider text-blue"></i>
+                            <div>
+                                <strong>Spider-Man (PS4/PS5)</strong>
+                                <span>Very forgiving camera, visually rewarding simple button prompts.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2026 Control Center. Built for the aspiring gamer.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
