@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for standard icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Model Viewer for 3D Interactive Controller -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 
 <body>
@@ -56,9 +59,11 @@
                     <a href="#hardware" class="btn-primary">Start Exploring</a>
                 </div>
                 <div class="hero-visual">
-                    <!-- The generated 3D image will go here -->
-                    <img src="./assets/modern_gamepad_3d.png" alt="High Quality 3D Modern Gamepad"
-                        class="gamepad-img floating-anim">
+                    <!-- 360 Degree Interactive 3D Controller -->
+                    <model-viewer src="./assets/controller.glb" alt="A 3D interactive model of a gamepad" auto-rotate
+                        camera-controls disable-zoom shadow-intensity="1" exposure="1.2"
+                        class="hero-3d-model floating-anim">
+                    </model-viewer>
                 </div>
             </div>
             <!-- Background Decorative Blobs -->

@@ -283,12 +283,20 @@ nav a:hover {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     perspective: 1000px;
+    z-index: 2;
 }
 
-.gamepad-img {
+/* 360 Degree 3D Model Configuration */
+.hero-3d-model {
+    width: 600px;
+    height: 400px;
     max-width: 100%;
-    height: auto;
+    outline: none;
+    /* Removes the focus ring when clicked */
+    --poster-color: transparent;
+    /* Hides default grey loading bckg */
     filter: drop-shadow(0 20px 40px rgba(0, 240, 255, 0.2));
 }
 
