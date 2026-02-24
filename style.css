@@ -1,13 +1,20 @@
-/* VARIABLES & THEME */
+/* VARIABLES & THEME (Blueprint Theme) */
 :root {
-    --bg-dark: #0a0a0f;
-    --bg-panel: #14141d;
-    --neon-blue: #00f0ff;
-    --neon-purple: #b026ff;
-    --text-main: #e2e8f0;
-    --text-muted: #94a3b8;
-    --glass-bg: rgba(20, 20, 29, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --bg-dark: #1A2238;
+    /* Matte Navy */
+    --bg-panel: #141b2c;
+    /* Deeper Navy */
+    --neon-blue: #00e0ff;
+    /* Kept slightly for variety, but less dominant */
+    --neon-purple: #FF6B35;
+    /* Replaced purple with Bright Orange */
+    --text-main: #f8fafc;
+    /* Off-White */
+    --text-muted: #cbd5e1;
+    --glass-bg: rgba(26, 34, 56, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --grid-color: rgba(255, 255, 255, 0.03);
+    --grid-color-strong: rgba(255, 255, 255, 0.08);
     --font-sans: 'Inter', sans-serif;
     --transition-speed: 0.3s;
 }
@@ -29,6 +36,14 @@ html {
 
 body {
     overflow-x: hidden;
+    /* Graph Paper Background Overlay applied to whole body */
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(var(--grid-color-strong) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color-strong) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+    background-attachment: fixed;
 }
 
 .container {
@@ -122,39 +137,41 @@ p {
 
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid var(--glass-border);
-    border-radius: 16px;
+    border-radius: 4px;
+    /* Blueprint is sharper */
     padding: 2rem;
     transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .glass-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 240, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: var(--neon-purple);
+    /* Orange highlight */
+    box-shadow: 0 5px 25px rgba(255, 107, 53, 0.15);
 }
 
 .hover-glow-blue:hover {
     border-color: var(--neon-blue);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
 }
 
 .hover-glow-purple:hover {
     border-color: var(--neon-purple);
-    box-shadow: 0 0 20px rgba(176, 38, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.15);
 }
 
-/* AMBIENT LIGHT BLOBS */
+/* AMBIENT LIGHT BLOBS - Toned down for Blueprint */
 .ambient-light {
     position: absolute;
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(140px);
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0.2;
     pointer-events: none;
 }
 
@@ -276,20 +293,18 @@ nav a:hover {
 }
 
 .floating-anim {
-    animation: float 6s ease-in-out infinite;
+    animation: blueprint-pulse 4s infinite alternate;
 }
 
-@keyframes float {
+@keyframes blueprint-pulse {
     0% {
-        transform: translateY(0px) rotateX(5deg) rotateY(-5deg);
-    }
-
-    50% {
-        transform: translateY(-20px) rotateX(10deg) rotateY(5deg);
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
     }
 
     100% {
-        transform: translateY(0px) rotateX(5deg) rotateY(-5deg);
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
     }
 }
 
@@ -566,6 +581,175 @@ nav a:hover {
     padding: 3rem 0;
     border-top: 1px solid var(--glass-border);
     background: var(--bg-panel);
+}
+
+/* TOOLTIP & HOVER EFFECTS */
+.hover-term {
+    color: var(--neon-purple);
+    /* Orange text */
+    text-decoration: underline dashed;
+    text-underline-offset: 4px;
+    cursor: help;
+    position: relative;
+    display: inline-block;
+}
+
+.hover-term:hover {
+    color: #fff;
+}
+
+/* Base tooltip container injected via JS or pure CSS */
+.hover-term::after {
+    content: '';
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 60px;
+    height: 60px;
+    background: var(--bg-panel);
+    border: 1px solid var(--neon-purple);
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Show tooltip on hover */
+.hover-term:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* CSS Animations for different tooltips using custom data-attributes */
+/* Data Tooltip: Trigger */
+.hover-term[data-tooltip="trigger"]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(120% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 25px;
+    background: #fff;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 101;
+    pointer-events: none;
+}
+
+.hover-term[data-tooltip="trigger"]:hover::before {
+    opacity: 1;
+    visibility: visible;
+    animation: pullTrigger 1.5s infinite;
+}
+
+@keyframes pullTrigger {
+    0% {
+        height: 25px;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        height: 10px;
+        transform: translateX(-50%) translateY(15px);
+        background: var(--neon-purple);
+    }
+
+    100% {
+        height: 25px;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Data Tooltip: Bumper */
+.hover-term[data-tooltip="bumper"]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(120% + 30px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 8px;
+    border-radius: 4px;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 101;
+    pointer-events: none;
+}
+
+.hover-term[data-tooltip="bumper"]:hover::before {
+    opacity: 1;
+    visibility: visible;
+    animation: pressBumper 1s infinite;
+}
+
+@keyframes pressBumper {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(2px) scale(0.95);
+        background: var(--neon-blue);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* Data Tooltip: Stick Click */
+.hover-term[data-tooltip="stick-click"]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(120% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #fff;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 101;
+    pointer-events: none;
+}
+
+.hover-term[data-tooltip="stick-click"]:hover::before {
+    opacity: 1;
+    visibility: visible;
+    animation: clickStick 1s infinite;
+}
+
+@keyframes clickStick {
+    0% {
+        transform: translateX(-50%) scale(1);
+        border-color: #fff;
+        border-width: 2px;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(0.8);
+        background: var(--neon-purple);
+        border-width: 6px;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1);
+        border-color: #fff;
+        border-width: 2px;
+    }
 }
 
 /* RESPONSIVE DESIGN */
