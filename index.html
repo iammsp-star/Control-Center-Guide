@@ -146,10 +146,10 @@
                     <p class="question-text">Which button is typically squeezed like a gas pedal for driving or
                         shooting?</p>
                     <div class="quiz-options">
-                        <button class="quiz-btn" onclick="checkAnswer(1, 'D-Pad')">D-Pad</button>
-                        <button class="quiz-btn" onclick="checkAnswer(1, 'Trigger')">Trigger (L2/R2)</button>
-                        <button class="quiz-btn" onclick="checkAnswer(1, 'Bumper')">Bumper (L1/R1)</button>
-                        <button class="quiz-btn" onclick="checkAnswer(1, 'Stick')">Right Stick</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'D-Pad', this)">D-Pad</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Trigger', this)">Trigger (L2/R2)</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Bumper', this)">Bumper (L1/R1)</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Stick', this)">Right Stick</button>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="quiz-1-feedback" style="display: none;">
@@ -230,10 +230,11 @@
                         <p class="question-text">In a standard FPS Shooter layout, what is usually mapped to the Left
                             Trigger (LT/L2)?</p>
                         <div class="quiz-options">
-                            <button class="quiz-btn" onclick="checkAnswer(2, 'Jump')">Jump</button>
-                            <button class="quiz-btn" onclick="checkAnswer(2, 'Reload')">Reload</button>
-                            <button class="quiz-btn" onclick="checkAnswer(2, 'ADS')">Aim Down Sights (ADS)</button>
-                            <button class="quiz-btn" onclick="checkAnswer(2, 'Fire')">Fire Weapon</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Jump', this)">Jump</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Reload', this)">Reload</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'ADS', this)">Aim Down Sights
+                                (ADS)</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Fire', this)">Fire Weapon</button>
                         </div>
                     </div>
                     <div class="quiz-feedback" id="quiz-2-feedback" style="display: none;"></div>

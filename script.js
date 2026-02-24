@@ -89,7 +89,7 @@ function applyLocks() {
     }
 }
 
-function checkAnswer(quizId, answer) {
+function checkAnswer(quizId, answer, btnElement) {
     const quizData = quizzes[quizId];
     if (!quizData) return;
 
@@ -106,7 +106,9 @@ function checkAnswer(quizId, answer) {
 
     if (answer === quizData.answer) {
         // Find clicked button to style it correctly
-        event.target.classList.add('correct');
+        if (btnElement) {
+            btnElement.classList.add('correct');
+        }
 
         feedbackBox.textContent = `Correct! Awesome job! +${quizData.xp} XP`;
         feedbackBox.className = 'quiz-feedback feedback-success';
@@ -123,7 +125,9 @@ function checkAnswer(quizId, answer) {
         }
 
     } else {
-        event.target.classList.add('wrong');
+        if (btnElement) {
+            btnElement.classList.add('wrong');
+        }
         feedbackBox.textContent = `Incorrect. Try re-reading the section!`;
         feedbackBox.className = 'quiz-feedback feedback-error';
         feedbackBox.style.display = 'block';
