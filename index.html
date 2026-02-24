@@ -20,6 +20,17 @@
     <header class="glass-header">
         <div class="container nav-content">
             <h1 class="logo">Control<span class="highlight">Center</span></h1>
+
+            <!-- Duolingo Stats Bar -->
+            <div class="user-stats">
+                <div class="stat-item streak-stat" title="Daily Streak">
+                    <i class="fa-solid fa-fire text-purple"></i> <span id="streak-counter">0</span>
+                </div>
+                <div class="stat-item xp-stat" title="Experience Points">
+                    <i class="fa-solid fa-star" style="color: #FFC107;"></i> <span id="xp-counter">0</span> XP
+                </div>
+            </div>
+
             <nav>
                 <ul>
                     <li><a href="#hero">Start</a></li>
@@ -68,7 +79,8 @@
                     <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
                     <h3>Joysticks (Thumbsticks)</h3>
                     <p>The two sticks you push around. <strong>Left stick</strong> usually moves your character.
-                        <strong>Right stick</strong> moves your camera or aim.</p>
+                        <strong>Right stick</strong> moves your camera or aim.
+                    </p>
                     <div class="pro-tip">
                         <h4><i class="fa-solid fa-bolt"></i> Dead Zones</h4>
                         <p>If your character moves when you aren't touching the stick, your controller has "stick
@@ -118,11 +130,38 @@
                             stick to standard!</em></p>
                 </div>
             </div>
+
+            <!-- Quiz 1: Hardware -->
+            <div class="quiz-container glass-card" id="quiz-1">
+                <div class="quiz-header">
+                    <h3>🧠 Knowledge Check: Hardware</h3>
+                    <div class="xp-reward">+50 XP</div>
+                </div>
+                <div class="quiz-body" id="quiz-1-body">
+                    <p class="question-text">Which button is typically squeezed like a gas pedal for driving or
+                        shooting?</p>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'D-Pad')">D-Pad</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Trigger')">Trigger (L2/R2)</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Bumper')">Bumper (L1/R1)</button>
+                        <button class="quiz-btn" onclick="checkAnswer(1, 'Stick')">Right Stick</button>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="quiz-1-feedback" style="display: none;">
+                    <!-- Feedback injected dynamically -->
+                </div>
+            </div>
         </section>
 
         <!-- Interactive Map Section -->
-        <section id="layouts" class="layouts-section dark-panel section-padding">
+        <section id="layouts" class="layouts-section dark-panel section-padding module module-locked" data-module="2">
             <div class="container">
+                <div class="locked-overlay">
+                    <i class="fa-solid fa-lock"></i>
+                    <h3>Module Locked</h3>
+                    <p>Pass the Hardware Quiz to unlock Patterns & Layouts!</p>
+                </div>
+                <!-- Content Below -->
                 <div class="section-header">
                     <h2>Genre Standard <span class="highlight">Layouts</span></h2>
                     <p>Different games use buttons differently. Select a genre to see the typical layout.</p>
@@ -175,13 +214,39 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Quiz 2: Layouts -->
+                <div class="quiz-container glass-card" id="quiz-2">
+                    <div class="quiz-header">
+                        <h3>🧠 Knowledge Check: Layouts</h3>
+                        <div class="xp-reward">+100 XP</div>
+                    </div>
+                    <div class="quiz-body" id="quiz-2-body">
+                        <p class="question-text">In a standard FPS Shooter layout, what is usually mapped to the Left
+                            Trigger (LT/L2)?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Jump')">Jump</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Reload')">Reload</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'ADS')">Aim Down Sights (ADS)</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, 'Fire')">Fire Weapon</button>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback" id="quiz-2-feedback" style="display: none;"></div>
+                </div>
             </div>
             <!-- Background Decorative Blobs -->
             <div class="ambient-light blob-purple layout-blob"></div>
         </section>
 
         <!-- Curriculum Section -->
-        <section id="curriculum" class="curriculum-section container section-padding">
+        <section id="curriculum" class="curriculum-section container section-padding module module-locked"
+            data-module="3">
+            <div class="locked-overlay">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Module Locked</h3>
+                <p>Pass the Layouts Quiz to unlock the Curriculum!</p>
+            </div>
+
             <div class="section-header">
                 <h2>Step-by-Step <span class="highlight">Curriculum</span></h2>
                 <p>The path to building muscle memory.</p>
@@ -222,8 +287,15 @@
         </section>
 
         <!-- Resources Section -->
-        <section id="resources" class="resources-section dark-panel section-padding">
+        <section id="resources" class="resources-section dark-panel section-padding module module-locked"
+            data-module="4">
             <div class="container grid-2-col">
+                <div class="locked-overlay full-width-overlay">
+                    <i class="fa-solid fa-lock"></i>
+                    <h3>Final Unlocks</h3>
+                    <p>Complete your training to access the Resources!</p>
+                </div>
+
                 <div class="resource-card glass-card">
                     <h3>Controller vs. Mouse/Keyboard</h3>
                     <table class="comparison-table">
