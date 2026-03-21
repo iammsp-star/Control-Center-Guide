@@ -213,3 +213,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// GAMEPAD API LOGIC & CYBER-TECH VISUALIZER
+let animationFrameId = null;
+
+function initGamepadVisualizer() {
+    window.addEventListener('gamepadconnected', (e) => {
+        console.log('Gamepad connected:', e.gamepad.id);
+        const statusText = document.getElementById('gamepad-status');
+        if (statusText) {
+            statusText.textContent = 'LIVE SYNC';
+            statusText.classList.replace('offline', 'online');
+        }
+        const awaiting = document.querySelector('.awaiting-text');
+        if (awaiting) awaiting.style.display = 'none';
+        const connectedViz = document.getElementById('connected-viz');
+        if (connectedViz) connectedViz.style.display = 'flex';
+        const coachPanel = document.getElementById('coach-panel');
+        if (coachPanel) coachPanel.style.display = 'block';
+        
+        pollGamepad();
+    });
+
+    window.addEventListener('gamepaddisconnected', (e) => {
+        console.log('Gamepad disconnected:', e.gamepad.id);
+        const statusText = document.getElementById('gamepad-status');
+        if (statusText) {
+            statusText.textContent = 'OFFLINE';
+            statusText.classList.replace('online', 'offline');
+        }
+        const awaiting = document.querySelector('.awaiting-text');
+        if (awaiting) awaiting.style.display = 'block';
+        const connectedViz = document.getElementById('connected-viz');
+        if (connectedViz) connectedViz.style.display = 'none';
+        const coachPanel = document.getElementById('coach-panel');
+        if (coachPanel) coachPanel.style.display = 'none';
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    });
+}
+
+function pollGamepad() {
+    const gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
+    const activeGamepad = Array.from(gamepads).find(gp => gp !== null);
+    
+    if (activeGamepad) {
+        // Update Action Button (Cross/A = index 0)
+        const btnCross = document.getElementById('btn-cross');
+        if (btnCross) {
+            if (activeGamepad.buttons[0] && activeGamepad.buttons[0].pressed) {
+                btnCross.classList.add('active');
+            } else {
+                btnCross.classList.remove('active');
+            }
+        }
+        
+        // Update Trigger (R2/RT = index 7)
+        const r2Value = activeGamepad.buttons[7] ? activeGamepad.buttons[7].value : 0;
+        const triggerFill = document.getElementById('trigger-fill-r2');
+        const triggerText = document.getElementById('trigger-text-r2');
+        if (triggerFill) triggerFill.style.height = `${r2Value * 100}%`;
+        if (triggerText) triggerText.textContent = `${Math.round(r2Value * 100)}%`;
+        
+        // Coach Logic Example
+        const coachMsg = document.getElementById('coach-message');
+        if (coachMsg) {
+            if (r2Value > 0.1 && r2Value < 1.0) {
+                coachMsg.textContent = "Coach: Smooth actuation detected. Keep your pulls deliberate.";
+            } else if (r2Value === 1.0) {
+                coachMsg.textContent = "Coach: Max actuation reached (100%). Good for fast scoping.";
+            } else if (activeGamepad.buttons[0] && activeGamepad.buttons[0].pressed) {
+                coachMsg.textContent = "Coach: Jump/Action recorded. Great timing!";
+            } else {
+                coachMsg.textContent = "Coach: Awaiting input...";
+            }
+        }
+    }
+    
+    animationFrameId = requestAnimationFrame(pollGamepad);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initGamepadVisualizer();
+});

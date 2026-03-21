@@ -158,6 +158,56 @@
             </div>
         </section>
 
+        <!-- Live Sync Visualizer Section -->
+        <section id="live-sync" class="live-sync-section container section-padding">
+            <div class="section-header">
+                <h2>Live Hardware <span class="highlight">Sync</span></h2>
+                <p>Plug in your controller. We'll track your inputs in real-time to analyze your actuation points.</p>
+            </div>
+            
+            <div id="gamepad-viz-container" class="glass-card gamepad-viz-card fade-up">
+                <div class="viz-header flex justify-between" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 2rem;">
+                    <h3 style="text-transform: uppercase; font-size: 1.25rem; letter-spacing: 0.1em; color: #fff;">Input Telemetry</h3>
+                    <span id="gamepad-status" class="status-badge offline">OFFLINE</span>
+                </div>
+                
+                <div id="gamepad-display" class="gamepad-display flex-center" style="min-height: 250px;">
+                    <div class="awaiting-text" style="color: #666; animation: pulse 2s infinite; letter-spacing: 0.2em; text-transform: uppercase; font-family: monospace;">
+                        Awaiting Hardware Initialization...
+                    </div>
+                    
+                    <!-- Hidden until connected -->
+                    <div id="connected-viz" class="connected-viz flex gap-8 items-end" style="display: none; justify-content: center; width: 100%;">
+                        <div class="btn-viz-group flex-col items-center gap-4">
+                            <div id="btn-cross" class="viz-btn-circle flex-center">
+                                <span style="font-weight: bold; text-transform: uppercase; opacity: 0.5;">Cross</span>
+                            </div>
+                            <span style="font-size: 0.75rem; color: #666; font-family: monospace;">DIGITAL</span>
+                        </div>
+                        
+                        <div class="trigger-viz-group flex-col items-center gap-4">
+                            <div class="trigger-bar-container">
+                                <div id="trigger-fill-r2" class="trigger-fill"></div>
+                                <span id="trigger-text-r2" class="trigger-text">0%</span>
+                            </div>
+                            <span class="text-cyan" style="font-size: 0.75rem; font-family: monospace;">R2 ACTUATION</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elite Coarch Panel -->
+                <div id="coach-panel" class="coach-panel" style="display: none; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--neon-blue); animation: pulse 2s infinite;"></div>
+                        <span class="text-cyan" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-family: monospace;">Coach Analysis</span>
+                    </div>
+                    <p id="coach-message" style="font-size: 0.875rem; color: #ccc; font-family: monospace; margin: 0;">
+                        Awaiting input data to analyze your muscle memory patterns.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Interactive Map Section -->
         <section id="layouts" class="layouts-section dark-panel section-padding module module-locked" data-module="2">
             <div class="container">
